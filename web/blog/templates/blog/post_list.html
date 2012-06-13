@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block body %}
+	{% for post in post_list %}
+		<h1><a href="#">{{ post.title }}</a></h1>
+	{% endfor %}
+{% endblock %}
