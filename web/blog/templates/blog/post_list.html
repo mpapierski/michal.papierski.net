@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block body %}
+	{% load markup %}
 	{% for post in post_list %}
-		<h1><a href="#">{{ post.title }}</a></h1>
+		<div class="row-fluid post">
+			<div class="content span9">
+				<h1><a href="#">{{ post.title }}</a></h1>
+				{{ post.message|markdown }}
+			</div>
+			<div class="info span3">
+				<i class="icon-tags"></i>&nbsp;
+				{% for category in post.categories.all %}<a href="#" class="btn btn-mini btn-primary">{{ category.name }}</a>
+				{% endfor %}<br/>
+				<i class="icon-calendar"></i>&nbsp;&nbsp;<span class="label">{{ post.modified|date }}</span></br>
+			</div>
+		</div>
 	{% endfor %}
 {% endblock %}
