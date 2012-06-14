@@ -38,5 +38,8 @@ class Post(models.Model):
 	message = models.TextField(verbose_name = _('Message'))
 	categories = models.ManyToManyField(Category)
 	
+	class Meta:
+		ordering = ('-added', )
+	
 	def __unicode__(self):
 		return self.title
