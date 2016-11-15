@@ -2,8 +2,11 @@
 title = "Hello, world!"
 date = "2016-11-15T18:09:38+01:00"
 draft = true
-
+tags = [ "Development", "c++" ]
+categories = [ "Development" ]
 +++
+
+I decided to post something interesting here every often.
 
 ```c++
 #include <iostream>
@@ -13,4 +16,4 @@ int main() {
 }
 ```
 
-From now on I'll be post something every often. Stay tuned!
+Stay tuned!

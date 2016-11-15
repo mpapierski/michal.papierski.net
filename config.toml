@@ -7,3 +7,6 @@ theme = "hugo_theme_robust"
 pygmentsuseclasses = true
 pygmentsstyle = "monokai"
 PygmentsCodeFences = true
+
+[Params]
+  Author = "Michał Papierski"
