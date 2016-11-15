@@ -6,7 +6,10 @@ tags = [ "Development", "c++" ]
 categories = [ "Development" ]
 +++
 
-I decided to post something interesting here every often.
+> If you want to be a writer, you must do two things above all others: read a lot and write a lot. 
+> -- <cite>Stephen King</cite>
+
+Here is my take:
 
 ```c++
 #include <iostream>
