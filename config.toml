@@ -10,3 +10,6 @@ PygmentsCodeFences = true
 
 [Params]
   Author = "Michał Papierski"
+
+# Disqus stuff
+disqusShortname = "michalpapierskisblog"
