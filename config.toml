@@ -1,3 +1,9 @@
 baseurl = "http://michal.papierski.net/"
 title = "michal papierski/devblog"
 languageCode = "pl"
+theme = "hugo_theme_robust"
+
+# For source code syntax highlighting
+pygmentsuseclasses = true
+pygmentsstyle = "monokai"
+PygmentsCodeFences = true
