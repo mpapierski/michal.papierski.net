@@ -1,7 +1,10 @@
 image: alpine:3.4
 
 before_script:
-  - apk update && apk add openssl
+  - apk update && apk add openssl git python
+  - wget https://bootstrap.pypa.io/get-pip.py
+  - python get-pip.py
+  - pip --version
   - wget https://github.com/spf13/hugo/releases/download/v0.17/hugo_0.17_Linux-64bit.tar.gz -O hugo.tar.gz
   - echo "6a74626b64434a5ee9fc5ec4fbf22ce6  hugo.tar.gz" | md5sum -c
   - tar xf hugo.tar.gz && cp ./hugo_0.17_linux_amd64/hugo_0.17_linux_amd64 /usr/bin/hugo
@@ -10,6 +13,7 @@ before_script:
 pages:
   script:
     - git submodule update --init
+    - pip install -r requirements.txt
     - hugo
   artifacts:
     paths:
