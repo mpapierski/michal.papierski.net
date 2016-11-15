@@ -6,11 +6,6 @@ tags = [ "Development", "c++" ]
 categories = [ "Development" ]
 +++
 
-> If you want to be a writer, you must do two things above all others: read a lot and write a lot. 
-> -- <cite>Stephen King</cite>
-
-Here is my take:
-
 ```c++
 #include <iostream>
 
@@ -18,5 +13,7 @@ int main() {
   std::cout << "Hello, world!" << std::endl;
 }
 ```
+
+I will post something interesting here every often.
 
 Stay tuned!
