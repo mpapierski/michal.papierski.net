@@ -9,6 +9,7 @@ before_script:
 
 pages:
   script:
+    - git submodule update --init
     - hugo
   artifacts:
     paths:
