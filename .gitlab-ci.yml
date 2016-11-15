@@ -1,0 +1,17 @@
+image: alpine:3.4
+
+before_script:
+  - apk update && apk add openssl
+  - wget https://github.com/spf13/hugo/releases/download/v0.17/hugo_0.17_Linux-64bit.tar.gz -O hugo.tar.gz
+  - echo "6a74626b64434a5ee9fc5ec4fbf22ce6  hugo.tar.gz" | md5sum -c
+  - tar xf hugo.tar.gz && cp ./hugo /usr/bin
+  - hugo version
+
+pages:
+  script:
+    - hugo
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
