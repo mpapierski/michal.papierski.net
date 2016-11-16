@@ -1,5 +1,5 @@
 baseurl = "http://michal.papierski.net/"
-title = "michal papierski/devblog"
+title = "Michał Papierski's Blog"
 languageCode = "en-us"
 theme = "hugo_theme_robust"
 
