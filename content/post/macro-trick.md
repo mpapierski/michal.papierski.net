@@ -94,9 +94,9 @@ const char *HTML(const Color color) {
 }
 
 int main() {
-  std::cout << HTML(Red) << std::endl;
-  std::cout << HTML(Green) << std::endl;
-  std::cout << HTML(Blue) << std::endl;
+  std::cout << HTML(Red) << '\n';
+  std::cout << HTML(Green) << '\n';
+  std::cout << HTML(Blue) << '\n';
 };
 ```
 
@@ -139,6 +139,6 @@ And actual code for listing all the colors and values:
 
 ```c++
 for (auto *it = kColors; it->name != nullptr; ++it) {
-  std::cout << it->name << "=" << it->value << std::endl;
+  std::cout << it->name << "=" << it->value << '\n';
 }
 ```
