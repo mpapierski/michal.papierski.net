@@ -1,15 +1,14 @@
 baseurl = "http://michal.papierski.net/"
 title = "Michał Papierski's Blog"
 languageCode = "en-us"
-theme = "hugo_theme_robust"
+theme = "hyde-x"
 
 # For source code syntax highlighting
-pygmentsuseclasses = true
-pygmentsstyle = "monokai"
-PygmentsCodeFences = true
-
 [Params]
   Author = "Michał Papierski"
+  highlight = "sunburst"
+  github = "https://github.com/mpapierski"
+  rss = true
 
 # Disqus stuff
 disqusShortname = "michalpapierskisblog"
