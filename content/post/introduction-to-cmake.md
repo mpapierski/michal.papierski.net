@@ -100,41 +100,85 @@ Those three stages are nothing more than invocation on commands. So going deeper
 
 There is a pattern. There is input, and output. Output of one command could be an input to different command.
 
-# Syntax
+# Overview
+
+Your script is made of commands. Command names are case-insensitive.
+
+```cmake
+cmake_minimum_required(VERSION 3.0)
+project(my_project)
+```
+
+Arguments could be quoted, or escaped. In case you need longer, multi line arguments there are also bracket arguments[^1].
+
+```cmake
+# Quoted
+project("my_project")
+# Normal
+add_executable(my_project main.cpp)
+# Bracket
+message(STATUS [=[
+This
+is
+a
+bracket
+with unique marker which is
+equal sign
+]=])
+```
+
+Variable references has the form `${variable}`. Whether you will put it inside quoted or unquoted argument does not make difference. Such reference is expanded and replaced with the contents of variable. You can also reference environment variables the same which is slightly different form: `$ENV{VAR}`.
+
+Comments starts with `#`.
+
+## Control structures
+
+As it is scripting language there are constructions to control flow of your script. 
+
+### Conditional blocks
+
+You can control flow of your script with conditional statements:
+
+```cmake
+if(var1)
+message("foo")
+elif(var2)
+message("bar")
+else()
+message("baz")
+endif()
+```
+
+### Loops
 
 TBD
 
-# Control structures
+### Command definitions
 
 TBD
 
-## Conditional blocks
+## Variables
 
 TBD
 
-## Loops
-
-TBD
-
-## Command definitions
-
-TBD
-
-# Variables
-
-TBD
-
-## Useful variables
+### Useful variables
 
 * `CMAKE_CURRENT_SOURCE_DIR`
 * `CMAKE_CURRENT_BINARY_DIR`
 
-# Compilation
+# Tutorial
+
+This is the place where you will learn how to write build scripts and how to do it properly.
+
+## Boilerplate
+
+Every script starts with some boilerplate.
+
+```cmake
+cmake_minimum_required (VERSION 3.0)
+project (my_project)
+```
 
 TBD
 
-TBD
-
-TBD
-
-TBD
+[^1]: This is available since version 3.0
