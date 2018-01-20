@@ -1,14 +1,14 @@
 baseurl = "http://michal.papierski.net/"
-title = "Michał Papierski's Blog"
+title = "Michał Papierski"
 languageCode = "en-us"
-theme = "hyde-x"
+theme = "hyde"
+copyright = "Michał Papierski"
 
-# For source code syntax highlighting
-[Params]
-  Author = "Michał Papierski"
-  highlight = "sunburst"
-  github = "https://github.com/mpapierski"
-  rss = true
+[Author]
+	name = "Michał Papierski"
 
-# Disqus stuff
-disqusShortname = "michalpapierskisblog"
+[params]
+	description = "stuff written by me"
+	github = "https://github.com/mpapierski"
+	disqus = "michalpapierskisblog"
+	pygmentsCodefences = true
