@@ -25,6 +25,12 @@ hugo version:
 if [ $# -eq 1 ]
   then msg="$1"
 fi
+
+if [ -z "$(git status --porcelain)" ]; then
+    echo "Nothing changed!"
+    exit 1
+fi
+
 git commit -m "$msg"
 
 # Save committed SHA1
