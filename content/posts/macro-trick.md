@@ -1,6 +1,5 @@
 +++
 title = "Macro trick"
-draft = true
 date = "2016-11-18T16:06:33+01:00"
 tags = [ "Development", "c++" ]
 categories = [ "Development" ]
