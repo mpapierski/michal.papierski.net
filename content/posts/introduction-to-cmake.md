@@ -4,7 +4,7 @@ categories = []
 keywords = []
 description = ""
 title = "Introduction to CMake"
-
+draft = true
 +++
 
 CMake is a build system that works. Actually this is not a build system. This is a "meta" build system because it generates a build system out of a `CMakeLists.txt` definition and actual building happens using that tool. It basically means that we can use it to generate `Makefile` and build our project using `make` command. Of course we are not limited to `make`! From the same `CMakeLists.txt` file we can also generate `Visual Studio Solution`, or any other supported tool. This will solve your problems when you have to support two platforms: one for automake, and `.sln` for Visual Studio. Before you had support two separate build systems and after switching you can throw away those files and just stick to `cmake`.
