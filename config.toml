@@ -4,6 +4,8 @@ languageCode = "en-us"
 theme = "hyde"
 copyright = "Michał Papierski"
 
+googleAnalytics = "UA-22624843-1"
+
 [Author]
 	name = "Michał Papierski"
 
