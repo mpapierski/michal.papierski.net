@@ -13,4 +13,3 @@ googleAnalytics = "UA-22624843-1"
 	description = "stuff written by me"
 	github = "https://github.com/mpapierski"
 	disqus = "michalpapierskisblog"
-	pygmentsCodefences = true

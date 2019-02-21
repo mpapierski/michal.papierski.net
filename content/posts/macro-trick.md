@@ -14,14 +14,15 @@ provided value.
 Nothing special -- first thing that comes to your mind might be a global
 instance of `std::map`, right?
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 enum Color { Red, Green, Blue };
 
 std::map<Color, std::string> kColors{
     {Red, "#ff0000"}, {Green, "#00ff00"}, {Blue, "#0000ff"}};
 
 std::string HTML(const Color color) { return kColors[color]; }
-```
+
+{{< / highlight >}}
 
 We have constants for colors, we store HTML values for each of the color
 constant and when there is a need to check its html value we just do a
@@ -37,7 +38,7 @@ Lookup function might hurt, and `std::string` seems overkill.
 While we can use `std::unordered_map` which might improve our lookup times to
 `O(1)` on average, there is better solution:
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 enum Color { Red, Green, Blue };
 
 const char *HTML(const Color color) {
@@ -52,7 +53,7 @@ const char *HTML(const Color color) {
     return nullptr;
   }
 }
-```
+{{< / highlight >}}
 
 Compilers are smart enough to output a lookup table for our `switch`
 statement. This gives us a `O(1)` constant lookup time which is a nice
@@ -67,7 +68,7 @@ and maintain a constant `O(1)` lookup times?
 
 _Preprocessor macro._
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 #define ENUM_COLORS(XX) \
   XX(Red, "#ff0000")    \
   XX(Green, "#00ff00")  \
@@ -97,14 +98,14 @@ int main() {
   std::cout << HTML(Green) << '\n';
   std::cout << HTML(Blue) << '\n';
 };
-```
+{{< / highlight >}}
 
 Now adding new color is just adding new line to the `ENUM_COLORS` macro.
 
 What about function that returns *actual* name of the
 color?
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 const char *Name(const Color color) {
   switch (color) {
 #define XX(name, value) \
@@ -116,13 +117,13 @@ const char *Name(const Color color) {
     return nullptr;
   }
 }
-```
+{{< / highlight >}}
 
 Lets explore this idea further. Lets say we want to list all the colors
 we have in our enum. First we need a code to
 populate a list which values we know.
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 constexpr struct {
   const char *name;
   const char *value;
@@ -132,12 +133,12 @@ ENUM_COLORS(XX)
 #undef XX
   {nullptr, nullptr}
 };
-```
+{{< / highlight >}}
 
 And actual code for listing all the colors and values:
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 for (auto *it = kColors; it->name != nullptr; ++it) {
   std::cout << it->name << "=" << it->value << '\n';
 }
-```
+{{< / highlight >}}

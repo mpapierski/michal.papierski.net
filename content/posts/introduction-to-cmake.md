@@ -19,9 +19,9 @@ CMake has its own scripting language to describe build rules. In comparision to 
 
 First of all there is a command that you will use the most. This will take your `CMakeLists.txt` and will output a `Makefile`.
 
-```sh
+{{< highlight sh "linenos=table" >}}
 cmake -G Generator -DVARIABLE1 -DVARIABLE2 ~/Project
-```
+{{< / highlight >}}
 
 You can pass variables to your script using `-D` switches. There might be some confusion - this is not a flag for your compiler. This is just just for your build script so you can have feature switches and other good things.
 
@@ -31,15 +31,15 @@ After successful run CMake will also output a cache to remember what happened du
 
 Now you can build your project:
 
-```sh
+{{< highlight sh "linenos=table" >}}
 make
-```
+{{< / highlight >}}
 
 This is _build_ step. In this case we have all specified rules materialized into a `Makefile` which we can use to build our stuff. Again, you are supposed to never touch this file. After every change to your build scripts that file will be generated again.
 
 What if you need to build `Visual Studio`, or `Xcode` project? And you need to support Linux as well? No need to remember all those command lines for different generators to trigger builds. There is another command line switch in cmake that will build your project regardless of your generator. Think of it as a wrapper for your IDE.
 
-```sh
+{{< highlight sh "linenos=table" >}}
 cmake \
   --build \
   --target target \
@@ -47,7 +47,7 @@ cmake \
   --clean-first \
   --use-stderr \
   A_directory_where_you_generated_your_project
-```
+{{< / highlight >}}
 
 All those command line switches might be confusing to you so here is little explanation without going too deep into details.
 
@@ -62,9 +62,9 @@ If you are afraid of command line there are graphical tools to help you in using
 
 I assume you have at least basic knowledge about building software. Before going into deep waters with you I want to ask first what is a a compilation process?
 
-```
+{{< / highlight >}}
 source -> executable
-```
+{{< / highlight >}}
 
 _maybe a nice diagram here will do_
 
@@ -104,14 +104,14 @@ There is a pattern. There is input, and output. Output of one command could be a
 
 Your script is made of commands. Command names are case-insensitive.
 
-```cmake
+{{< / highlight >}}cmake
 cmake_minimum_required(VERSION 3.0)
 project(my_project)
-```
+{{< / highlight >}}
 
 Arguments could be quoted, or escaped. In case you need longer, multi line arguments there are also bracket arguments[^1].
 
-```cmake
+{{< / highlight >}}cmake
 # Quoted
 project("my_project")
 # Normal
@@ -125,7 +125,7 @@ bracket
 with unique marker which is
 equal sign
 ]=])
-```
+{{< / highlight >}}
 
 Variable references has the form `${variable}`. Whether you will put it inside quoted or unquoted argument does not make difference. Such reference is expanded and replaced with the contents of variable. You can also reference environment variables the same which is slightly different form: `$ENV{VAR}`.
 
@@ -139,7 +139,7 @@ As it is scripting language there are constructions to control flow of your scri
 
 You can control flow of your script with conditional statements:
 
-```cmake
+{{< / highlight >}}cmake
 if(var1)
 message("foo")
 elif(var2)
@@ -147,7 +147,7 @@ message("bar")
 else()
 message("baz")
 endif()
-```
+{{< / highlight >}}
 
 ### Loops
 
@@ -174,10 +174,10 @@ This is the place where you will learn how to write build scripts and how to do 
 
 Every script starts with some boilerplate.
 
-```cmake
+{{< / highlight >}}cmake
 cmake_minimum_required (VERSION 3.0)
 project (my_project)
-```
+{{< / highlight >}}
 
 TBD
 

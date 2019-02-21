@@ -6,7 +6,8 @@ draft: true
 
 Whenever I'm writing a backend service in C++ there happen to be a problem with serialization of structures from/to a persistent store. Be it a database, network protocol, file, or anything. Basically anytime you're forced to write code such as:
 
-```c++
+
+{{< highlight cpp "linenos=table" >}}
 // myPersistentStore is a connection to a database,
 // and method below runs a SQL query.
 myPersistentStore.query(R"SQL("SELECT "field1", "field2", "field3", ..., "field42" FROM "account")SQL");
@@ -21,7 +22,7 @@ for (auto&& row : myPersistentStore.fetchAll()) {
   // ...
   myStructure.field42 = std::stoull(row["field42"]);
 }
-```
+{{< / highlight >}}
 
 If you have a fairly big database, with large amount of different fields it can be headache to extend anything -- lots of repetition.
 
@@ -31,12 +32,13 @@ I should tackle this problem from a different angle -- I need to list all the fi
 
 For instance I can abuse preprocessor to enrich my `myStructure` with custom annotations.
 
-```c++
+{{< highlight cpp "linenos=table" >}}
 struct Person: AutoProp<Person> {
   AUTOPROP_BEGIN(Person);
 
   std::string AUTOPROP(first_name);
   std::string AUTOPROP(last_name);
+  
   int AUTOPROP(age);
 
   AUTOPROP_END();
@@ -48,7 +50,8 @@ Class `AutoProp<>` would expose additional methods such as `forEach` for enumera
 
 Generated code will look similiar to:
 
-```
+
+{{< / highlight >}}
 struct Person: AutoProp<Person> {
 // Prolog
 constexpr Empty getAttributes0() { return {}; }
@@ -62,5 +65,5 @@ constexpr auto getAttributes3() { return chain(getAttributes2(), makeAttribute(&
 
 // Epilog
 constexpr auto getAttributes() { return getAttributes3(); }
-```
+{{< / highlight >}}
 
