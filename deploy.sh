@@ -31,7 +31,8 @@ if [ -z "$(git status --porcelain)" ]; then
     exit 1
 fi
 
-git commit -m "$msg"
+git checkout master && \
+    git commit -m "$msg"
 
 # Save committed SHA1
 committed="$(git rev-parse HEAD)"
