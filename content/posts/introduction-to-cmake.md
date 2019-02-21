@@ -62,9 +62,9 @@ If you are afraid of command line there are graphical tools to help you in using
 
 I assume you have at least basic knowledge about building software. Before going into deep waters with you I want to ask first what is a a compilation process?
 
-{{< / highlight >}}
+```
 source -> executable
-{{< / highlight >}}
+```
 
 _maybe a nice diagram here will do_
 
@@ -104,14 +104,14 @@ There is a pattern. There is input, and output. Output of one command could be a
 
 Your script is made of commands. Command names are case-insensitive.
 
-{{< / highlight >}}cmake
+{{< highlight cmake "linenos=table" >}}
 cmake_minimum_required(VERSION 3.0)
 project(my_project)
 {{< / highlight >}}
 
 Arguments could be quoted, or escaped. In case you need longer, multi line arguments there are also bracket arguments[^1].
 
-{{< / highlight >}}cmake
+{{< highlight cmake "linenos=table" >}}
 # Quoted
 project("my_project")
 # Normal
@@ -139,7 +139,7 @@ As it is scripting language there are constructions to control flow of your scri
 
 You can control flow of your script with conditional statements:
 
-{{< / highlight >}}cmake
+{{< highlight cmake "linenos=table" >}}
 if(var1)
 message("foo")
 elif(var2)
@@ -174,7 +174,7 @@ This is the place where you will learn how to write build scripts and how to do 
 
 Every script starts with some boilerplate.
 
-{{< / highlight >}}cmake
+{{< highlight cmake "linenos=table" >}}
 cmake_minimum_required (VERSION 3.0)
 project (my_project)
 {{< / highlight >}}

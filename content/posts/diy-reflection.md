@@ -10,7 +10,9 @@ Whenever I'm writing a backend service in C++ there happen to be a problem with 
 {{< highlight cpp "linenos=table" >}}
 // myPersistentStore is a connection to a database,
 // and method below runs a SQL query.
-myPersistentStore.query(R"SQL("SELECT "field1", "field2", "field3", ..., "field42" FROM "account")SQL");
+myPersistentStore.query(R"SQL(
+  "SELECT "field1", "field2", "field3", ..., "field42"
+  FROM "account")SQL);
 // fetchAll returns a iterable view on database cursor,
 // and row contains a map-like object where you can access value of a
 // specific column by its name.
@@ -38,11 +40,12 @@ struct Person: AutoProp<Person> {
 
   std::string AUTOPROP(first_name);
   std::string AUTOPROP(last_name);
-  
+
   int AUTOPROP(age);
 
   AUTOPROP_END();
 };
+{{< / highlight >}}
 
 Macro `AUTOPROP_BEGIN` shall generate a "prolog" of the class: an unique method that returns no attributes. Everytime `AUTOPROP` would be called it has to generate a new unique method, that would chain result of a method generated above it, with address and name of the property itself. At the end `AUTOPROP_END` shall generate a predictable method that calls the unique method generated above it which will predictably return a list of attributes in runtime.
 
@@ -50,18 +53,26 @@ Class `AutoProp<>` would expose additional methods such as `forEach` for enumera
 
 Generated code will look similiar to:
 
-
-{{< / highlight >}}
+{{< highlight cpp "linenos=table" >}}
 struct Person: AutoProp<Person> {
 // Prolog
 constexpr Empty getAttributes0() { return {}; }
 
 std::string first_name;
-constexpr auto getAttributes1() { return chain(getAttributes0(), makeAttribute(&Person::first_name, "first_name")); }
+constexpr auto getAttributes1() {
+  return chain(
+    getAttributes0(),
+    makeAttribute(&Person::first_name, "first_name")); }
 std::string last_name;
-constexpr auto getAttributes2() { return chain(getAttributes1(), makeAttribute(&Person::last_name, "last_name")); }
+constexpr auto getAttributes2() {
+  return chain(
+    getAttributes1(),
+    makeAttribute(&Person::last_name, "last_name")); }
 int age;
-constexpr auto getAttributes3() { return chain(getAttributes2(), makeAttribute(&Person::age, "age")); }
+constexpr auto getAttributes3() {
+  return chain(
+    getAttributes2(),
+    makeAttribute(&Person::age, "age")); }
 
 // Epilog
 constexpr auto getAttributes() { return getAttributes3(); }
