@@ -179,7 +179,7 @@ template <typename T> T from_json(json j) {
 
 With reflection on the horizon targeted at C++20 there is little we can achieve with this code that the paper cannot. Nonetheless I found it quite useful when I had to expose a large data structure to the user, and give the ability to dynamically change the properties.
 
-The code itself could be improved to provide a way to index the attributes by integer, which would make it easier to convert structures to `std::tuple`.
+The code itself could be improved to provide a way to index the attributes by integer, which would make it easier to convert structures to `std::tuple`. However, in my initial tests it also required the change of data structure (i.e. `mpl::vector`) which made compilation times painfully slow.
 
 # Code
 
