@@ -34,7 +34,9 @@ We need OCaml compiler and some other dependencies. Since I'm running quite mode
 brew install ocaml opam
 {{ </highlight>}}
 
-`configure` mentions llvm-3.0, but it compile cleanly against released 3.0 - we need to go deeper and find correct snapshot of it, and build it from sources.
+`configure` mentions llvm-3.0, but doesn't compile cleanly against released 3.0 - we need to go deeper and find correct snapshot of it, and build it from sources. According to llvm history, and compile errors I tracked down the llvm snapshot to commit 097f9a94f66.
+
+
 
 WIP.
 
