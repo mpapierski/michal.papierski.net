@@ -134,11 +134,6 @@ constexpr void forEachImpl(Empty &&node, Func &&func) {
 
 template <typename T, typename R, typename Func>
 constexpr void forEachImpl(Attribute<T, R> &&node, Func &&func) {
-  func(std::move(node));
-}
-
-template <typename T, typename R, typename Func>
-constexpr void forEachImpl(Attribute<T, R> &&node, Func &&func) {
   // This is called for each Attribute, and attribute 
   func(std::move(node));
 }
@@ -161,7 +156,7 @@ One of the most interesting uses for this is to do automatic serialization/deser
 
 Example code:
 
-```
+{{< highlight cpp >}}
 template <typename T> json to_json(AutoProp<T> &obj) {
   json j;
   obj.forEach([&](auto &&key, auto &&value) { j[key] = value; });
@@ -173,7 +168,7 @@ template <typename T> T from_json(json j) {
   obj.forEach([&](auto &&key, auto &&value) { obj.set(key, j[key]); });
   return obj;
 }
-```
+{{< /highlight >}}
 
 # Future steps
 
